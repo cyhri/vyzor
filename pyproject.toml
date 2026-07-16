@@ -1,0 +1,14 @@
+[project]
+name = "vyzor"
+version = "0.1.0"
+description = "Cross-Platform Security Chaos Engineering Platform"
+requires-python = ">=3.13"
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
