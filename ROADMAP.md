@@ -1,29 +1,44 @@
 # VYZOR Roadmap
 
-## v0.1
-- Project Architecture
-- Configuration System
-- Logger
-- CLI
 
-## v0.2
-- Windows Target
-- CPU Stress Experiment
-- Memory Stress Experiment
+## v0.1 — Foundation
 
-## v0.3
-- Linux Target
-- Disk Stress
-- Network Latency
+- [x] Repository initialization
+- [x] Project architecture
+- [ ] Configuration System
+- [ ] Logger
+- [ ] CLI
 
-## v0.4
-- Docker Support
 
-## v0.5
-- Kubernetes Support
+## v0.2 — Windows
+
+- [ ] Windows Target
+- [ ] CPU Stress Experiment
+- [ ] Memory Stress Experiment
+
+
+## v0.3 — Linux
+
+- [ ] Linux Target
+- [ ] Disk Stress Experiment
+- [ ] Network Latency Experiment
+
+
+## v0.4 — Docker
+
+- [ ] Docker Target
+- [ ] Container Chaos
+
+
+## v0.5 — Kubernetes
+
+- [ ] Kubernetes Target
+- [ ] Pod Chaos
+
 
 ## v1.0
-- Dashboard
-- REST API
-- Reporting
-- Plugin System
+
+- [ ] Dashboard
+- [ ] REST API
+- [ ] Reporting
+- [ ] Plugin System
