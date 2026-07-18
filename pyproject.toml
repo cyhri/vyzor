@@ -4,6 +4,16 @@ version = "0.1.0"
 description = "Cross-Platform Security Chaos Engineering Platform"
 requires-python = ">=3.13"
 
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.black]
 line-length = 88
 
