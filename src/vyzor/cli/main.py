@@ -1,27 +1,23 @@
 import typer
 
-from vyzor.engine.exceptions import ExperimentNotFoundError
-from vyzor.engine.resolver import resolve_experiment
+from vyzor.cli.run import app as run_app
+from vyzor.cli.catalog import app as catalog_app
+from vyzor.cli.plugins import app as plugins_app
+from vyzor.cli.report import app as report_app
+from vyzor.cli.run import app as run_app
+from vyzor.cli.targets import app as targets_app
+from vyzor.cli.validate import app as validate_app
 
 app = typer.Typer(
     help="Validate resilience by simulating controlled failures across multiple platforms.",
-    invoke_without_command=False,
-    no_args_is_help=True,
 )
 
-
-@app.command()
-def run(experiment_name: str):
-    """
-    Execute a registered chaos experiment.
-    """
-    try:
-        experiment = resolve_experiment(experiment_name)
-        typer.echo(f"Resolved experiment: {experiment}")
-
-    except ExperimentNotFoundError as error:
-        typer.echo(error)
-
+app.add_typer(run_app, name="run")
+app.add_typer(catalog_app, name="catalog")
+app.add_typer(plugins_app, name="plugins")
+app.add_typer(report_app, name="report")
+app.add_typer(targets_app, name="targets")
+app.add_typer(validate_app, name="validate")
 
 if __name__ == "__main__":
     app()
