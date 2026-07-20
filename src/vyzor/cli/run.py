@@ -1,22 +1,21 @@
 import typer
 
-from vyzor.engine.exceptions import ExperimentNotFoundError
 from vyzor.engine.resolver import resolve_experiment
+from vyzor.engine.exceptions import ExperimentNotFoundError
 
-app = typer.Typer(
-    invoke_without_command=True,
-    no_args_is_help=True,
-)
+app = typer.Typer(help="Run chaos experiments.")
 
 
-@app.callback()
-def run(experiment_name: str):
-    """
-    Execute a registered chaos experiment.
-    """
+@app.callback(invoke_without_command=True)
+def run(
+    experiment: str = typer.Argument(...),
+):
     try:
-        experiment = resolve_experiment(experiment_name)
-        typer.echo(f"Resolved experiment: {experiment}")
+        experiment_cls = resolve_experiment(experiment)
+
+        experiment_instance = experiment_cls()
+
+        experiment_instance.execute()
 
     except ExperimentNotFoundError as error:
         typer.echo(error)

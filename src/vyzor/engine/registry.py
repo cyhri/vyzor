@@ -1,4 +1,5 @@
+from vyzor.experiments import CPUStressExperiment
+
 EXPERIMENT_REGISTRY = {
-    "cpu-stress": "CPUStressExperiment",
-    "memory-stress": "MemoryStressExperiment",
+    "cpu-stress": CPUStressExperiment,
 }

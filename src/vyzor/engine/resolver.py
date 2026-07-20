@@ -7,3 +7,6 @@ def resolve_experiment(experiment_name: str):
         return EXPERIMENT_REGISTRY[experiment_name]
     except KeyError:
         raise ExperimentNotFoundError(experiment_name)
+    
+def list_experiments():
+     return list(EXPERIMENT_REGISTRY.keys())

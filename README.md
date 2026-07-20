@@ -1,5 +1,6 @@
 # VYZOR
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+
 *Build resilient systems by intentionally breaking them.*
 > Cross-platform framework for resilience testing and chaos engineering.
 
