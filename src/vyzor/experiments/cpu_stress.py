@@ -16,11 +16,21 @@ def _stress_worker(duration: int):
 class CPUStressExperiment(BaseExperiment):
     name = "cpu-stress"
 
-    def execute(self, duration: int = 10):
-        cpu_count = multiprocessing.cpu_count()
+    description = (
+        "Generate sustained CPU load "
+        "for a configurable duration."
+    )
+
+    category = "resource"
+
+    risk_level = "medium"
+
+    def execute(self, duration: int = 10, workers: int | None = None,):
+        cpu_count = workers or multiprocessing.cpu_count()
 
         print(f"Starting CPU stress on {cpu_count} cores...")
-        print(f"Duration: {duration} seconds")
+        print(f"Duration: {duration}s")
+        print(f"Workers : {cpu_count}")
 
         processes = []
 

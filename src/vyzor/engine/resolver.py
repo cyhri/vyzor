@@ -9,4 +9,7 @@ def resolve_experiment(experiment_name: str):
         raise ExperimentNotFoundError(experiment_name)
     
 def list_experiments():
-     return list(EXPERIMENT_REGISTRY.keys())
+    return [
+        experiment()
+        for experiment in EXPERIMENT_REGISTRY.values()
+    ]
