@@ -3,11 +3,8 @@ import typer
 from vyzor.engine.exceptions import ExperimentNotFoundError
 from vyzor.engine.resolver import resolve_experiment
 
-app = typer.Typer(help="Run chaos experiments.")
 
-
-@app.callback()
-def execute(
+def run(
     experiment: str = typer.Argument(..., help="Experiment name"),
     duration: int = typer.Option(
         10,
@@ -16,7 +13,7 @@ def execute(
         min=1,
         help="Duration in seconds",
     ),
-    workers: int = typer.Option(
+    workers: int | None = typer.Option(
         None,
         "--workers",
         "-w",
