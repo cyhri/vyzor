@@ -19,16 +19,29 @@ def run(
         "-w",
         help="Number of worker processes",
     ),
+    memory: int = typer.Option(
+        256,
+        "--memory",
+        "-m",
+        min=1,
+        help="Memory to allocate in MB.",
+    ),
 ):
     try:
         experiment_cls = resolve_experiment(experiment)
 
         experiment = experiment_cls()
 
-        experiment.execute(
-            duration=duration,
-            workers=workers,
-        )
+        if experiment.name == "memory-stress":
+           experiment.execute(
+           memory=memory,
+           duration=duration,
+    )
+        else:
+           experiment.execute(
+           duration=duration,
+           workers=workers,
+    )      
 
     except ExperimentNotFoundError as error:
         typer.echo(error)
