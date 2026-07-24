@@ -2,6 +2,7 @@ import typer
 
 from vyzor.engine.exceptions import ExperimentNotFoundError
 from vyzor.engine.resolver import resolve_experiment
+from vyzor.reporting.reporter import ExperimentReporter
 
 
 def run(
