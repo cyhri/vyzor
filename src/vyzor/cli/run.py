@@ -27,6 +27,13 @@ def run(
         min=1,
         help="Memory to allocate in MB.",
     ),
+    size: int = typer.Option(
+        100,
+         "--size",
+        "-s",
+        min=1,
+        help="Disk usage in MB.",
+    ),
 ):
     try:
         experiment_cls = resolve_experiment(experiment)
@@ -37,6 +44,7 @@ def run(
         duration=duration,
         workers=workers,
         memory=memory,
+        size=size,
 )  
 
     except ExperimentNotFoundError as error:
