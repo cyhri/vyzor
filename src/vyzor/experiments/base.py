@@ -9,7 +9,7 @@ class BaseExperiment(ABC):
     category: str
     risk_level: str
 
-    @abstractmethod
-    def execute(self):
-        """Execute the experiment."""
-        pass
+@abstractmethod
+def execute(self, **kwargs):
+    """Execute the experiment."""
+    pass

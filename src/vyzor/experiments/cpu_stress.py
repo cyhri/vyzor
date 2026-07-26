@@ -25,7 +25,10 @@ class CPUStressExperiment(BaseExperiment):
 
     risk_level = "medium"
 
-    def execute(self, duration: int = 10, workers: int | None = None,):
+    def execute(self, **kwargs):
+
+        duration = kwargs.get("duration", 10)
+        workers = kwargs.get("workers")
         cpu_count = workers or multiprocessing.cpu_count()
 
         print(f"Starting CPU stress on {cpu_count} cores...")

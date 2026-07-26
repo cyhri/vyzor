@@ -15,11 +15,9 @@ class MemoryStressExperiment(BaseExperiment):
 
     risk_level = "medium"
 
-    def execute(
-        self,
-        memory: int = 256,
-        duration: int = 10,
-    ):
+    def execute(self, **kwargs):
+        memory = kwargs.get("memory", 256)
+        duration = kwargs.get("duration", 10)
         print(f"Allocating {memory} MB of memory...")
 
         allocated = bytearray(memory * 1024 * 1024)

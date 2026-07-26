@@ -33,16 +33,11 @@ def run(
 
         experiment = experiment_cls()
 
-        if experiment.name == "memory-stress":
-           experiment.execute(
-           memory=memory,
-           duration=duration,
-    )
-        else:
-           experiment.execute(
-           duration=duration,
-           workers=workers,
-    )      
+        experiment.execute(
+        duration=duration,
+        workers=workers,
+        memory=memory,
+)  
 
     except ExperimentNotFoundError as error:
         typer.echo(error)
