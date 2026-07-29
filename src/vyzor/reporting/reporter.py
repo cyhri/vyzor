@@ -34,4 +34,4 @@ class ExperimentReporter:
                 indent=4,
             )
 
-        print(f"Report saved: {filename}")
+        print(f"\nReport saved: {filename}")

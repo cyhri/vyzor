@@ -45,7 +45,14 @@ def run(
         workers=workers,
         memory=memory,
         size=size,
-)  
+)
+        reporter = ExperimentReporter()
+
+        reporter.save_report(
+         experiment=experiment.name,
+         success=True,
+         duration=duration,
+    ) 
 
     except ExperimentNotFoundError as error:
         typer.echo(error)
