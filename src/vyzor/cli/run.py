@@ -16,24 +16,31 @@ def run(
         help="Duration in seconds",
     ),
     workers: int | None = typer.Option(
-        None,
-        "--workers",
-        "-w",
-        help="Number of worker processes",
+         None,
+         "--workers",
+         "-w",
+         help="Number of worker processes",
     ),
     memory: int = typer.Option(
-        256,
-        "--memory",
-        "-m",
-        min=1,
-        help="Memory to allocate in MB.",
+         256,
+         "--memory",
+         "-m",
+         min=1,
+         help="Memory to allocate in MB.",
     ),
     size: int = typer.Option(
-        100,
+         100,
          "--size",
-        "-s",
+         "-s",
+         min=1,
+         help="Disk usage in MB.",
+    ),
+    latency: int = typer.Option(
+        100,
+        "--latency",
+        "-l",
         min=1,
-        help="Disk usage in MB.",
+        help="Latency in milliseconds.",
     ),
 ):
     try:
@@ -42,11 +49,12 @@ def run(
         experiment = experiment_cls()
 
         experiment.execute(
-        duration=duration,
-        workers=workers,
-        memory=memory,
-        size=size,
-)
+            duration=duration,
+            workers=workers,
+            memory=memory,
+            size=size,
+            latency=latency,
+        )
         reporter = ExperimentReporter()
 
         reporter.save_report(
