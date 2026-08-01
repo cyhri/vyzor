@@ -2,6 +2,7 @@ import typer
 
 from vyzor.engine.exceptions import ExperimentNotFoundError
 from vyzor.engine.resolver import resolve_experiment
+from vyzor.logging.logger import ExperimentLogger
 from vyzor.reporting.reporter import ExperimentReporter
 
 
@@ -49,10 +50,17 @@ def run(
         reporter = ExperimentReporter()
 
         reporter.save_report(
-         experiment=experiment.name,
-         success=True,
-         duration=duration,
-    ) 
+            experiment=experiment.name,
+            success=True,
+            duration=duration,
+)
+
+        logger = ExperimentLogger()
+
+        logger.log(
+        experiment=experiment.name,
+        status="completed",
+)
 
     except ExperimentNotFoundError as error:
         typer.echo(error)
