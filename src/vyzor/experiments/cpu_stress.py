@@ -14,6 +14,8 @@ def _stress_worker(duration: int):
 
 
 class CPUStressExperiment(BaseExperiment):
+    """CPU stress experiment."""
+
     name = "cpu-stress"
 
     description = (
@@ -25,15 +27,20 @@ class CPUStressExperiment(BaseExperiment):
 
     risk_level = "medium"
 
+    def before_execute(self):
+        """Hook executed before the experiment."""
+        pass
+
     def execute(self, **kwargs):
+        """Execute the CPU stress experiment."""
 
         duration = kwargs.get("duration", 10)
         workers = kwargs.get("workers")
+
         cpu_count = workers or multiprocessing.cpu_count()
 
-        print(f"Starting CPU stress on {cpu_count} cores...")
-        print(f"Duration: {duration}s")
-        print(f"Workers : {cpu_count}")
+        print(f"Duration : {duration}s")
+        print(f"Workers  : {cpu_count}")
 
         processes = []
 
@@ -48,4 +55,8 @@ class CPUStressExperiment(BaseExperiment):
         for process in processes:
             process.join()
 
-        print("CPU stress experiment completed.")
+        print("CPU stress execution completed.")
+
+    def after_execute(self):
+        """Hook executed after the experiment."""
+        pass

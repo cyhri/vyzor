@@ -48,13 +48,18 @@ def run(
 
         experiment = experiment_cls()
 
+        experiment.before_execute()
+
         experiment.execute(
             duration=duration,
             workers=workers,
             memory=memory,
             size=size,
             latency=latency,
-        )
+    )
+
+        experiment.after_execute()
+        
         reporter = ExperimentReporter()
 
         reporter.save_report(
