@@ -42,6 +42,13 @@ def run(
         min=1,
         help="Latency in milliseconds.",
     ),
+    loss: int = typer.Option(
+        10,
+        "--loss",
+        min=0,
+        max=100,
+        help="Packet loss percentage.",
+),
 ):
     try:
         experiment_cls = resolve_experiment(experiment)
