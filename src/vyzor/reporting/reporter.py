@@ -10,17 +10,21 @@ class ExperimentReporter:
         experiment,
         success,
         duration,
+        category,
+        risk_level,
         metrics,
     ):
 
         report = {
             "experiment": experiment,
+            "status": "completed" if success else "failed",
             "success": success,
             "duration": duration,
             "timestamp": datetime.now().isoformat(),
+            "category": category,
+            "risk_level": risk_level,
             "metrics": metrics,
         }
-
         reports_dir = Path("reports")
         reports_dir.mkdir(exist_ok=True)
 

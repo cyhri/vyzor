@@ -85,6 +85,8 @@ def run(
             success=True,
             duration=duration,
             metrics=results,
+            category=experiment.category,
+            risk_level=experiment.risk_level,
         )
 
         logger = ExperimentLogger()

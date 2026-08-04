@@ -1,0 +1,15 @@
+{
+    "experiment": "cpu-stress",
+    "status": "completed",
+    "success": true,
+    "duration": 2,
+    "timestamp": "2026-08-05T05:28:15.899965",
+    "category": "resource",
+    "risk_level": "medium",
+    "metrics": {
+        "execution_time": 2.18,
+        "platform": "Windows",
+        "python_version": "3.13.14",
+        "cpu_count": 12
+    }
+}
