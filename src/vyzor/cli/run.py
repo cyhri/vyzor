@@ -48,7 +48,13 @@ def run(
         min=0,
         max=100,
         help="Packet loss percentage.",
-),
+    ),
+    step: int = typer.Option(
+        32,
+        "--step",
+        min=1,
+        help="Memory allocation size in MB.",
+    ),
 ):
     try:
         experiment_cls = resolve_experiment(experiment)
@@ -63,7 +69,8 @@ def run(
             memory=memory,
             size=size,
             latency=latency,
-    )
+            step=step,
+        )
 
         experiment.after_execute()
         

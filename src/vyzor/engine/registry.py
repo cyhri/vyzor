@@ -3,6 +3,7 @@ from vyzor.experiments.memory_stress import MemoryStressExperiment
 from vyzor.experiments.disk_stress import DiskStressExperiment
 from vyzor.experiments.network_latency import NetworkLatencyExperiment
 from vyzor.experiments.packet_loss import PacketLossExperiment
+from vyzor.experiments.memory_growth import MemoryGrowthExperiment
 
 EXPERIMENT_REGISTRY = {
     "cpu-stress": CPUStressExperiment,
@@ -10,4 +11,5 @@ EXPERIMENT_REGISTRY = {
     "disk-stress": DiskStressExperiment,
     "network-latency": NetworkLatencyExperiment,
     "packet-loss": PacketLossExperiment,
+    "memory-growth": MemoryGrowthExperiment,
 }
