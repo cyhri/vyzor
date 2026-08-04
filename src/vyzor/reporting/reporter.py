@@ -7,9 +7,10 @@ class ExperimentReporter:
 
     def save_report(
         self,
-        experiment: str,
-        success: bool,
-        duration: int,
+        experiment,
+        success,
+        duration,
+        metrics,
     ):
 
         report = {
@@ -17,6 +18,7 @@ class ExperimentReporter:
             "success": success,
             "duration": duration,
             "timestamp": datetime.now().isoformat(),
+            "metrics": metrics,
         }
 
         reports_dir = Path("reports")

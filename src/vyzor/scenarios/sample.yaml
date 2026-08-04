@@ -1,0 +1,21 @@
+experiments:
+
+  - cpu-stress:
+      duration: 5
+      workers: 2
+
+  - memory-growth:
+      duration: 5
+      step: 16
+
+  - disk-stress:
+      duration: 5
+      size: 32
+
+  - network-latency:
+      duration: 5
+      latency: 100
+
+  - packet-loss:
+      duration: 5
+      loss: 15

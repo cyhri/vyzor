@@ -4,7 +4,7 @@ from vyzor.engine.exceptions import ExperimentNotFoundError
 from vyzor.engine.resolver import resolve_experiment
 from vyzor.logging.logger import ExperimentLogger
 from vyzor.reporting.reporter import ExperimentReporter
-
+from vyzor.metrics.collector import MetricsCollector
 
 def run(
     experiment: str = typer.Argument(..., help="Experiment name"),
@@ -61,6 +61,9 @@ def run(
 
         experiment = experiment_cls()
 
+        metrics = MetricsCollector()
+        metrics.start()
+
         experiment.before_execute()
 
         experiment.execute(
@@ -69,18 +72,20 @@ def run(
             memory=memory,
             size=size,
             latency=latency,
+            loss=loss,
             step=step,
         )
 
         experiment.after_execute()
-        
+        results = metrics.stop()
         reporter = ExperimentReporter()
 
         reporter.save_report(
             experiment=experiment.name,
             success=True,
             duration=duration,
-)
+            metrics=results,
+        )
 
         logger = ExperimentLogger()
 
